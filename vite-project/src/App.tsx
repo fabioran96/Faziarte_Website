@@ -112,43 +112,55 @@ function App() {
         </Routes>
        </StripeContainer>
 
-        <footer className="footer">
-          <Container fluid>
-            <Row className="align-items-center justify-content-between">
-              <Col xs={12} md={4} className="text-center text-md-left">
-                <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
-                  <input
-                    type="email"
-                    placeholder="Inserisci la tua email"
-                    value={newsletterEmail}
-                    onChange={handleNewsletterChange}
-                    required
-                  />
-                  <Button variant="primary" type="submit">
-                    Iscriviti
-                  </Button>
-                </form>
-              </Col>
+       <footer className="footer">
+  <Container fluid>
+    <Row className="align-items-center justify-content-between">
+      <Col xs={12} md={4} className="text-center text-md-left">
+        <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
+          <div className="d-flex">
+            <input
+              type="email"
+              placeholder="Lascia la tua mail e rimani aggiornato"
+              value={newsletterEmail}
+              onChange={handleNewsletterChange}
+              required
+              className="form-control me-2" // Aggiungi questa classe per il campo input
+              style={{ height: '40px' }} // Stessa altezza del pulsante
+            />
+            <Button
+              variant="primary"
+              type="submit"
+              style={{ height: '40px' }} // Aggiunge la stessa altezza per il pulsante
+            >
+              Iscriviti
+            </Button>
+            
+            
+            
+          </div>
+          
+        </form>
+      </Col>
 
-              <Col xs={12} md={4} className="text-center text-md-right">
-                <div className="social-icons">
-                  <img src={FLogo} alt="logo" className="logo-footer" />
-                  <a href="https://www.instagram.com/faziarte/" target="_blank" rel="noopener noreferrer">
-                  
-                  
-                  <FaInstagram className="social-icon" /></a>
-                  <a href="https://www.tiktok.com/@faziarte" target="_blank" rel="noopener noreferrer">
-                  <FaTiktok className="social-icon" /></a>
-                </div>
-              </Col>
-            </Row>
-            <Row className="poweredBy">
-              <Col xs={12} md={4} className="text-center py-2">
-                Powered by Fabio Ranocchiari
-              </Col>
-            </Row>
-          </Container>
-        </footer>
+      <Col xs={12} md={4} className="text-center text-md-right">
+        <div className="social-icons">
+          <img src={FLogo} alt="logo" className="logo-footer" />
+          <a href="https://www.instagram.com/faziarte/" target="_blank" rel="noopener noreferrer">
+            <FaInstagram className="social-icon" />
+          </a>
+          <a href="https://www.tiktok.com/@faziarte" target="_blank" rel="noopener noreferrer">
+            <FaTiktok className="social-icon" />
+          </a>
+        </div>
+      </Col>
+    </Row>
+    <Row className="poweredBy">
+      <Col xs={12} md={4} className="text-center py-2">
+        Powered by Fabio Ranocchiari
+      </Col>
+    </Row>
+  </Container>
+</footer>
         
       
 

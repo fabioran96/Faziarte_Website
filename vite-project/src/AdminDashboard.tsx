@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Form, Button, Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
 interface Murales {
   id: number;
@@ -66,45 +67,63 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <div className="dashboard">
-      <h1>Gestione Murales</h1>
-      
-      {/* Form per aggiungere nuovi murales */}
-      <form onSubmit={handleAddMurale}>
-        <input
-          type="text"
-          placeholder="Nome"
-          value={newMurale.name}
-          onChange={(e) => setNewMurale({ ...newMurale, name: e.target.value })}
-          required
-        />
-        <textarea
-          placeholder="Descrizione"
-          value={newMurale.description}
-          onChange={(e) => setNewMurale({ ...newMurale, description: e.target.value })}
-          required
-        ></textarea>
-        <input
-          type="text"
-          placeholder="URL Immagine"
-          value={newMurale.imageUrl}
-          onChange={(e) => setNewMurale({ ...newMurale, imageUrl: e.target.value })}
-          required
-        />
-        <button type="submit">Aggiungi Murale</button>
-      </form>
+    <Container className="mt-5">
+      <Row className="justify-content-md-center">
+        <Col md={8}>
+          <h1 className="text-center mb-4">Gestione Murales</h1>
+          
+          {/* Form per aggiungere nuovi murales */}
+          <Card className="mb-4">
+            <Card.Body>
+              <h2>Aggiungi Nuovo Murales</h2>
+              <Form onSubmit={handleAddMurale}>
+                <Form.Group controlId="formName" className="mb-3">
+                  <Form.Label>Nome</Form.Label>
+                  <Form.Control 
+                    type="text" 
+                    placeholder="Inserisci il nome"
+                    value={newMurale.name}
+                    onChange={(e) => setNewMurale({ ...newMurale, name: e.target.value })}
+                    required
+                  />
+                </Form.Group>
 
-      {/* Elenco murales */}
-      <ul>
-        {muralesList.map((murales) => (
-          <li key={murales.id}>
-            <img src={murales.imageUrl} alt={murales.name} width={100} />
-            <p>{murales.name}</p>
-            <p>{murales.description}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+                <Form.Group controlId="formDescription" className="mb-3">
+                  <Form.Label>Descrizione</Form.Label>
+                  <Form.Control 
+                    as="textarea" 
+                    rows={3} 
+                    placeholder="Inserisci la descrizione"
+                    value={newMurale.description}
+                    onChange={(e) => setNewMurale({ ...newMurale, description: e.target.value })}
+                    required
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="formImageUrl" className="mb-3">
+                  <Form.Label>URL Immagine</Form.Label>
+                  <Form.Control 
+                    type="text"
+                    placeholder="Inserisci URL dell'immagine"
+                    value={newMurale.imageUrl}
+                    onChange={(e) => setNewMurale({ ...newMurale, imageUrl: e.target.value })}
+                    required
+                  />
+                </Form.Group>
+
+                <div className="d-grid">
+                  <Button variant="primary" type="submit" size="lg">
+                    Aggiungi Murale
+                  </Button>
+                </div>
+              </Form>
+            </Card.Body>
+          </Card>
+
+          
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

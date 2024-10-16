@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const AddMurales = () => {
   const [name, setName] = useState('');
@@ -38,30 +39,52 @@ const AddMurales = () => {
   };
 
   return (
-    <div className="add-murale">
-      <h1>Aggiungi Nuovo Murales</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nome"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <textarea
-          placeholder="Descrizione"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-        <input
-          type="file"
-          onChange={(e) => setImage(e.target.files ? e.target.files[0] : null)}
-          required
-        />
-        <button type="submit">Aggiungi Murales</button>
-      </form>
-    </div>
+    <Container className="mt-5">
+      <Row className="justify-content-md-center">
+        <Col xs={12} md={8}>
+          <h1 className="text-center mb-4">Aggiungi Nuovo Murales</h1>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formName" className="mb-3">
+              <Form.Label>Nome del Murales</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Inserisci il nome" 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formDescription" className="mb-3">
+              <Form.Label>Descrizione</Form.Label>
+              <Form.Control 
+                as="textarea" 
+                rows={3} 
+                placeholder="Inserisci la descrizione" 
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formImage" className="mb-3">
+              <Form.Label>Carica Immagine</Form.Label>
+              <Form.Control 
+                type="file"
+                onChange={(e) => setImage((e.target as HTMLInputElement).files?.[0] || null)} // Aggiunto type assertion
+                required
+              />
+            </Form.Group>
+
+            <div className="d-grid">
+              <Button variant="primary" type="submit" size="lg">
+                Aggiungi Murales
+              </Button>
+            </div>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
