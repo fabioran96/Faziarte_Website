@@ -24,7 +24,7 @@ const Preventivi = () => {
     const requestData = { serviceType, material, size, message, email };
 
     try {
-      const response = await fetch('http://localhost:5432/preventivi', {
+      const response = await fetch('http://localhost:3001/preventivi', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
