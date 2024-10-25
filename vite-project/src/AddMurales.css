@@ -1,0 +1,19 @@
+.add-murale {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-murale h1 {
+    font-weight: 600;
+  }
+  
+  .add-murale .form-control {
+    border-radius: 8px;
+  }
+  
+  .add-murale .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
