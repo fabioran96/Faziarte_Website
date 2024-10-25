@@ -45,8 +45,8 @@ const Preventivi = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Richiedi un preventivo</h1>
+    <div className="form container card mt-5 mx-auto">
+      <h3 className='mb-4'>Richiedi un preventivo</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Che tipo di servizio desideri?</label>

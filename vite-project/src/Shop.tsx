@@ -3,12 +3,15 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addToCart } from './store/cartslice';
 import { Product } from './store/cartslice';
+import { useNavigate } from 'react-router-dom';
+import './Shop.css';
 
 const Shop = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
 
-  // Fetch dei prodotti dal backend
+ 
   useEffect(() => {
     fetch('http://localhost:3001/products')
       .then(response => response.json())
@@ -21,6 +24,10 @@ const Shop = () => {
     alert(`${product.name} aggiunto al carrello!`);
   };
 
+  const handleViewDetails = (productId: number) => {
+    navigate(`/products/${productId}`); 
+  };
+
   return (
     <Container>
       <h1 className="my-5 text-center">Negozio</h1>
@@ -31,10 +38,13 @@ const Shop = () => {
               <Card.Img variant="top" src={product.imageUrl} />
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
-                <Card.Text>{product.description}</Card.Text>
+                
                 <h5>{product.price} €</h5>
-                <Button onClick={() => handleAddToCart(product)} variant="primary">
+                <Button onClick={() => handleAddToCart(product)} variant="primary" className="me-2">
                   Aggiungi al carrello
+                </Button>
+                <Button onClick={() => handleViewDetails(product.id)} variant="secondary" className='me-2'>
+                  Dettagli
                 </Button>
               </Card.Body>
             </Card>

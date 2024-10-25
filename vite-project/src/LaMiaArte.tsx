@@ -1,7 +1,7 @@
 import './LaMiaArte.css'
-import FLogo from './assets/F-logo.svg'
+import FLogo from './assets/Fazia-Logo.png' ;
 import{Container, Row, Col, Image, Button, Form} from 'react-bootstrap'
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Gallery1 from './assets/faziarteAmbraCotti.png'
 import Gallery2 from './assets/faziarteWork.png'
 import Gallery3 from './assets/FeniceShooting.png'
@@ -21,20 +21,27 @@ import Collab3 from './assets/Collab3.png'
 
 
 
-
-
-
-
-
-
 const LaMiaArte = () => {
 
-    const [contactData, setContactData] = useState({
+  const [contactData, setContactData] = useState({
         name: '',
         surname: '',
         email: '',
         message: ''
       });
+
+  const [showMore, setShowMore] = useState(false);
+
+  const [isLaMiaStoriaVisible, setIsLaMiaStoriaVisible] = useState(false);
+  const [isLastSectionVisible, setIsLastSectionVisible] = useState(false); // Stato per la sezione finale
+  const laMiaStoriaRef = useRef<HTMLDivElement>(null);
+  const lastSectionRef = useRef<HTMLDivElement>(null);
+  
+
+
+  const handleShowMoreClick = () => {
+    setShowMore(!showMore); // Cambia lo stato quando l'utente clicca il pulsante
+  };
     
   const handleContactChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -45,6 +52,37 @@ const LaMiaArte = () => {
     e.preventDefault();
     console.log('Contact form data:', contactData);
   };
+
+  const handleScroll = () => {
+    if (laMiaStoriaRef.current) {
+      const rect = laMiaStoriaRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (rect.top <= windowHeight * 0.75) {
+        setIsLaMiaStoriaVisible(true); // Attiva l'animazione per La Mia Storia
+      } else {
+        setIsLaMiaStoriaVisible(false);
+      }
+    }
+
+    if (lastSectionRef.current) {
+      const rect = lastSectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (rect.top <= windowHeight * 0.75) {
+        setIsLastSectionVisible(true); // Attiva l'animazione per la sezione finale
+      } else {
+        setIsLastSectionVisible(false);
+      }
+    }
+  };
+
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
 
     
     return (
@@ -75,11 +113,12 @@ const LaMiaArte = () => {
                 </Row>
               </Col>
           </Row>
+          
          <Row>
-           <Col xs={6} md={2}>
+           <Col xs={12} md={2}>
             <Image id="image3" src={Gallery3} fluid  className='gallery-images'/>
            </Col>
-         <Col xs={6} md={4}>
+         <Col xs={12} md={4}>
           <Image id="image478" src={Gallery4} fluid  className='gallery-images'/>
           <Image id="image478" src={Gallery7} fluid  className='gallery-images'/>
           <Image id="image478" src={Gallery8} fluid  className='gallery-images'/>
@@ -98,6 +137,12 @@ const LaMiaArte = () => {
          
          </Container>
 
+         <Container
+        ref={laMiaStoriaRef}
+        className={`LaMiaStoria ${isLaMiaStoriaVisible ? 'active' : ''}`}
+      >
+        <h3>La mia Storia</h3>
+
          <p className="mission">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque fugiat obcaecati similique voluptatum quisquam? 
             Ea, commodi corrupti deleniti quam natus, illum asperiores incidunt voluptas sequi quidem veritatis, provident unde non?
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae purus vel turpis posuere aliquet. Nunc in nulla tincidunt, 
@@ -110,10 +155,10 @@ const LaMiaArte = () => {
             Mauris a faucibus mi. Donec eget felis lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas eget sagittis elit. Vivamus nibh quam, pulvinar id aliquet vel, feugi</p>
 
             <Row>
-                <Col xs={12} md={6} className='d-flex justify-content-end'>
+                <Col xs={6} md={6} className='d-flex justify-content-end'>
                  <Image className='old-logo' src={OldFLogo}></Image> 
                 </Col> 
-                <Col xs={12} md={6} className='d-flex justify-content-start'>
+                <Col xs={6} md={6} className='d-flex justify-content-start'>
                     <Image className='new-logo' src={FLogo}></Image>
                 </Col>
                 
@@ -132,9 +177,12 @@ const LaMiaArte = () => {
             Mauris a faucibus mi. Donec eget felis lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas
             </p>
 
-            <h2 className='mb-5'>Fai un tour dei miei Murales</h2>
+            </Container>
+
+            <Container ref={lastSectionRef} className={`last-section ${isLastSectionVisible ? 'active' : ''}`}>
 
             <Container>
+            <h2 className='mb-5'>Fai un tour dei miei Murales</h2>
                 <Row>
                     <Col xs={12} md={12}>
                     <a href="murales"><Image className='map' src={VTMap} ></Image></a>   
@@ -142,7 +190,7 @@ const LaMiaArte = () => {
                 </Row>        
             </Container>
 
-            <Container className="position-relative"> 
+            <Container className="preventivi position-relative"> 
         <Row className="justify-content-center position-relative">
           <Col md={6} className="preventivo">
             <h2 className="mb-5">Vuoi un preventivo?</h2>
@@ -158,68 +206,9 @@ const LaMiaArte = () => {
         </div>
         </Container>
 
-        <Container className=" form">
-        <Row className="justify-content-center">
-        <Col xs={12} md={8} lg={6} className="mx-auto">
-            <h3 className="mb-5 text-center">Ispirazioni particolari? Scrivimi</h3>
-            <Form onSubmit={handleContactSubmit}>
-              {/* Nome */}
-              <Form.Group controlId="formName">
-                <Form.Label>Nome</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  placeholder="Enter your name"
-                  value={contactData.name}
-                  onChange={handleContactChange}
-                />
-              </Form.Group>
+        </Container>
 
-              {/*  Cognome */}
-              <Form.Group controlId="formSurname" className="mt-3">
-                <Form.Label>Cognome</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="surname"
-                  placeholder="Enter your surname"
-                  value={contactData.surname}
-                  onChange={handleContactChange}
-                />
-              </Form.Group>
-
-              {/*  Email */}
-              <Form.Group controlId="formEmail" className="mt-3">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  value={contactData.email}
-                  onChange={handleContactChange}
-                />
-              </Form.Group>
-
-              {/*  Messaggio */}
-              <Form.Group controlId="formMessage" className="mt-3">
-                <Form.Label>Message</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={4}
-                  name="message"
-                  placeholder="Write your message"
-                  value={contactData.message}
-                  onChange={handleContactChange}
-                />
-              </Form.Group>
-
-              
-              <Button variant="primary" type="submit" className="mt-4 w-100">
-                Invia
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+        
         
 
         </div>

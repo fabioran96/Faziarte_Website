@@ -41,7 +41,7 @@ const Scrivimi = () => {
   };
 
   return (
-    <Container className="form">
+    <Container className="form card mt-5">
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6} className="mx-auto">
           <h3 className="mb-5 text-center">Ispirazioni particolari? Scrivimi</h3>
