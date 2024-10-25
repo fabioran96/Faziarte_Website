@@ -1,0 +1,138 @@
+.mission {
+    padding-top: 100px;
+    padding-left: 300px;
+    padding-right: 300px;
+    padding-bottom: 100px;
+}
+
+.round-logo {
+   height: 350px;
+   
+}
+
+.gallery{
+    padding-top: 200px;
+    padding-bottom: 150px;
+}
+
+
+
+.gallery-images{
+   border: 6px solid #1E64FB;
+   object-fit: cover;
+   border-radius: 20px;
+}
+
+
+#image1{
+
+    height: 500px;
+    width: 600px;
+    margin-bottom: 20px;
+}
+
+#image2{
+    height: 400px;
+    width: 850px;
+}
+
+#image3{
+    height: 800px;
+}
+
+#image478{
+     height: 250px;
+     width: 500px;
+     margin-bottom: 25px;
+}
+
+#image5 {
+    height: 400px;
+}
+
+#image9 {
+    width: 400px;
+    height: 380px;
+    margin-top: 20px;
+}
+
+#image6{
+    height: 250px;
+    width: 500px;
+}
+
+#image10 {
+   margin-top: 20px;
+   height: 530px;
+   width: 460px;
+}
+
+.passione{
+   text-align: right;
+   font-size: 4rem;
+}
+
+.elementografico {
+    width: 500px;
+}
+
+
+.old-logo{
+    height: 175px;
+    padding-top: 10px;
+    
+}
+
+.new-logo{
+    height: 200px;
+}
+
+.map {
+    border-radius: 100%;
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    border: 6px solid #1E64FB;
+    margin-bottom: 300px;
+    
+}
+
+.preventivo {
+    background-color: rgba(128,128,128, 0.5);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 10px;
+    z-index: 10; 
+    position: relative; 
+}
+
+.images-collabs {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    opacity: 0.4; 
+    pointer-events: none; 
+}
+
+.collabs-image {
+    height: 500px;
+    margin: 0 10px; 
+    object-fit: cover;
+    margin: 0;
+}
+
+.form {
+    margin-top: 300px;
+    border: 1px solid #000000;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    margin-bottom: 100px;
+}
+
+
