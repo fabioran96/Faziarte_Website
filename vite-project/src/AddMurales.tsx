@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import './AddMurales.css'
 
 const AddMurales = () => {
   const [name, setName] = useState('');
@@ -71,7 +72,7 @@ const AddMurales = () => {
               <Form.Label>Carica Immagine</Form.Label>
               <Form.Control 
                 type="file"
-                onChange={(e) => setImage((e.target as HTMLInputElement).files?.[0] || null)} // Aggiunto type assertion
+                onChange={(e) => setImage((e.target as HTMLInputElement).files?.[0] || null)} 
                 required
               />
             </Form.Group>

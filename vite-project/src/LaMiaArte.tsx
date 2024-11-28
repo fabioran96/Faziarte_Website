@@ -33,14 +33,14 @@ const LaMiaArte = () => {
   const [showMore, setShowMore] = useState(false);
 
   const [isLaMiaStoriaVisible, setIsLaMiaStoriaVisible] = useState(false);
-  const [isLastSectionVisible, setIsLastSectionVisible] = useState(false); // Stato per la sezione finale
+  const [isLastSectionVisible, setIsLastSectionVisible] = useState(false); 
   const laMiaStoriaRef = useRef<HTMLDivElement>(null);
   const lastSectionRef = useRef<HTMLDivElement>(null);
   
 
 
   const handleShowMoreClick = () => {
-    setShowMore(!showMore); // Cambia lo stato quando l'utente clicca il pulsante
+    setShowMore(!showMore); 
   };
     
   const handleContactChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -58,7 +58,7 @@ const LaMiaArte = () => {
       const rect = laMiaStoriaRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       if (rect.top <= windowHeight * 0.75) {
-        setIsLaMiaStoriaVisible(true); // Attiva l'animazione per La Mia Storia
+        setIsLaMiaStoriaVisible(true); 
       } else {
         setIsLaMiaStoriaVisible(false);
       }
@@ -68,7 +68,7 @@ const LaMiaArte = () => {
       const rect = lastSectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       if (rect.top <= windowHeight * 0.75) {
-        setIsLastSectionVisible(true); // Attiva l'animazione per la sezione finale
+        setIsLastSectionVisible(true); 
       } else {
         setIsLastSectionVisible(false);
       }

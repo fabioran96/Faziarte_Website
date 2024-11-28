@@ -17,10 +17,10 @@ interface Product {
 }
 
 const DettaglioProdotto = () => {
-  const { productId } = useParams<{ productId: string }>(); // Otteniamo l'ID del prodotto dalla URL
-  const [product, setProduct] = useState<Product | null>(null); // Stato per il prodotto
-  const [loading, setLoading] = useState(true); // Stato per il caricamento
-  const [error, setError] = useState<string | null>(null); // Stato per eventuali errori
+  const { productId } = useParams<{ productId: string }>(); 
+  const [product, setProduct] = useState<Product | null>(null); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState<string | null>(null); 
   const dispatch = useDispatch();
 
 
@@ -30,7 +30,7 @@ const DettaglioProdotto = () => {
         const response = await fetch(`http://localhost:3001/products/${productId}`);
         if (response.ok) {
           const data = await response.json();
-          setProduct(data); // Salviamo i dettagli del prodotto nello stato
+          setProduct(data); 
           setLoading(false);
         } else {
           setError('Errore nel recupero del prodotto');
@@ -44,18 +44,18 @@ const DettaglioProdotto = () => {
     };
 
     fetchProductDetails();
-  }, [productId]); // Il fetch viene eseguito quando productId cambia
+  }, [productId]); 
 
   if (loading) {
-    return <p>Caricamento in corso...</p>; // Mostra un indicatore di caricamento
+    return <p>Caricamento in corso...</p>;
   }
 
   if (error) {
-    return <p>{error}</p>; // Mostra eventuali errori
+    return <p>{error}</p>; 
   }
 
   if (!product) {
-    return <p>Prodotto non trovato.</p>; // Mostra un messaggio se il prodotto non esiste
+    return <p>Prodotto non trovato.</p>; 
   }
 
   const handleAddToCart = (product: Product) => {

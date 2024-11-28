@@ -2,7 +2,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useEffect, useState, useRef } from 'react';
 import './Homepage.css';
 import logo from './assets/faziartelogo.svg';
-import FLogo from './assets/Fazia-logo.svg';
+import FLogo from './assets/Fazia-Logo.png';
 import LaTuaRosaImg from './assets/La tua rosa.png';
 import MedusaImg from './assets/Medusa.png';
 import FaziarteWorkImg from './assets/faziarteWork.png';
@@ -23,7 +23,7 @@ const Homepage = () => {
 
   const handleScrollToBottomSection = () => {
     if (bottomSectionRef.current) {
-      const topOffset = bottomSectionRef.current.getBoundingClientRect().top + window.pageYOffset - 65; // Modificato l'offset a -180px
+      const topOffset = bottomSectionRef.current.getBoundingClientRect().top + window.pageYOffset - 65; 
       window.scrollTo({
         top: topOffset,
         behavior: 'smooth'

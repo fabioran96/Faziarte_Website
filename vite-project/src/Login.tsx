@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Row, Col, Alert } from 'react-bootstrap';
 
 const Login = () => {
-  const [username, setUsername] = useState('fabioran');  // Valore predefinito
-  const [password, setPassword] = useState('12345');  // Valore predefinito
+  const [username, setUsername] = useState('fabioran');  
+  const [password, setPassword] = useState('12345');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 

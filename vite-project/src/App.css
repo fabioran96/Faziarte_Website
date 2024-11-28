@@ -58,12 +58,11 @@
     margin-left: 0; 
   }
 
-  /* Aumenta la dimensione del brand */
+  
   .navbar .navbar-brand {
     font-size: 24px;
   }
 
-  /* Aumenta la dimensione dei link della navbar per maggiore visibilità */
   .navbar-nav .nav-link {
     font-size: 30px;
     padding: 12px;
@@ -72,7 +71,6 @@
 
 /* Stili per dispositivi tra 768px e 1000px */
 @media (min-width: 768px) and (max-width: 1000px) {
-  /* Sposta il brand completamente a sinistra e il menu a destra */
   .navbar .navbar-brand {
     text-align: left;
     margin-right: auto;

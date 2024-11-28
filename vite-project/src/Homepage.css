@@ -6,7 +6,6 @@
   text-align: center;
 }
 
-/* Primo blocco: #F9FDFF */
 .top-section {
   background-color: #F9FDFF;
   padding-top: 200px;
@@ -27,9 +26,9 @@ h1 {
 .MainLogo {
   padding-bottom: 50px;
   background-color: transparent;
-  max-width: 2000px; /* Imposta un limite massimo */
+  max-width: 2000px; 
   height: auto;
-  width: 90%; /* Usa una percentuale del contenitore */
+  width: 90%; 
 
 }
 
@@ -49,7 +48,6 @@ h1 {
   
 } 
 
-/* Secondo blocco: #1032a2 */
 .bottom-section {
   background-color: #1032a2;
   width: 100vw;
